@@ -1,0 +1,17 @@
+/* Custom overrides for Domina Silentia theme */
+:root {
+  /* Darker gold accent for a more luxurious feel */
+  --accent-color: #b8860b;
+  /* Elegant serif font family */
+  --font-family: 'Georgia', 'Garamond', serif;
+}
+
+/* Apply custom font to body */
+body {
+  font-family: var(--font-family);
+}
+
+/* Add pulse animation class to ensure elements can pulse */
+.pulse {
+  animation: pulse 2s infinite;
+}
