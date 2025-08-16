@@ -24,7 +24,9 @@ a, a:visited {
 }
 
 /* Hide Silentis Test link in navigation */
-nav a[href="silentis-test.html"] {
+nahref*="silentis-test"
+  display: none;
+}nav a[href*="silentis-test"] {
   display: none;
 }
 
@@ -36,6 +38,11 @@ a:hover {
 /* Center content by default */
 section, main, .content, .container {
   text-align: center;
+}
+
+/* Hide Silentis Test link (catch all) */
+nav a[href*="silentis-test"] {
+  display: none;
 }
 
 /* Pulsing animation */
