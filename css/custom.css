@@ -17,7 +17,7 @@ body {
 }
 
 /* Make all links gold and pulsing */
-a {
+a, a:visited {
   color: var(--accent-color);
   text-decoration: none;
   animation: pulse 2s infinite;
@@ -26,4 +26,16 @@ a {
 /* Highlight links on hover */
 a:hover {
   color: #ffffff;
+}
+
+/* Center content by default */
+section, main, .content, .container {
+  text-align: center;
+}
+
+/* Pulsing animation */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
 }
