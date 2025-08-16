@@ -8,138 +8,279 @@ document.addEventListener('DOMContentLoaded', function() {
       <div style="text-align:center">
         <h2>This site is intended for visitors 21 years of age or older.</h2>
         <p>Please confirm that you are at least 21 years old.</p>
-        <button id="yesBtn" class="cta">Yes, I am 21+</button>
-        <button id="noBtn" class="cta">No</button>
-      </div>
-    `;
-    document.body.appendChild(overlay);
-    document.getElementById('yesBtn').addEventListener('click', function(){
-      localStorage.setItem('ageVerified', 'true');
-      document.body.removeChild(overlay);
-    });
-    document.getElementById('noBtn').addEventListener('click', function(){
-      window.location.href = 'https://example.com';
-    });
-  }
+// Silentis evaluation test dynamic logic with multiple-choice questions
+var testContainer = document.getElementById('testContainer');
+if (testContainer) {
+  var currentBlockIndex = 0;
+  // Define blocks with multiple-choice questions and scores
+  var questionBlocks = [
+    {
+      title: 'Loyalty & Motivation',
+      questions: [
+        {
+          text: 'Why do you seek entrance into Domina Silentia\'s realm?',
+          options: [
+            { text: 'To surrender completely and serve without question', score: 3 },
+            { text: 'To explore my submissive nature under Domina\'s guidance', score: 2 },
+            { text: 'Out of curiosity and to see what it\'s like', score: 1 },
+            { text: 'For fun and entertainment', score: 0 }
+          ]
+        },
+        {
+          text: 'Describe your understanding of absolute loyalty to a dominant figure.',
+          options: [
+            { text: 'Unwavering obedience and devotion', score: 3 },
+            { text: 'Following instructions diligently most of the time', score: 2 },
+            { text: 'Loyalty is earned, not blindly given', score: 1 },
+            { text: 'Loyalty is not necessary here', score: 0 }
+          ]
+        },
+        {
+          text: 'How do you prefer to express submission?',
+          options: [
+            { text: 'Through complete obedience and respect at all times', score: 3 },
+            { text: 'By following rules while keeping some autonomy', score: 2 },
+            { text: 'By negotiating terms of submission', score: 1 },
+            { text: 'I am not comfortable with submission', score: 0 }
+          ]
+        },
+        {
+          text: 'What motivates you to serve?',
+          options: [
+            { text: 'The satisfaction of pleasing and obeying Domina', score: 3 },
+            { text: 'Personal growth through discipline and control', score: 2 },
+            { text: 'Rewards or recognition', score: 1 },
+            { text: 'I do not have a clear motivation', score: 0 }
+          ]
+        },
+        {
+          text: 'How do you react when your loyalty is tested?',
+          options: [
+            { text: 'Reaffirm my dedication and strive harder', score: 3 },
+            { text: 'Reflect and try to improve', score: 2 },
+            { text: 'Feel conflicted', score: 1 },
+            { text: 'Question the authority', score: 0 }
+          ]
+        },
+        {
+          text: 'What fears do you bring to this journey?',
+          options: [
+            { text: 'Failing to meet Domina\'s expectations', score: 3 },
+            { text: 'Losing my sense of self', score: 2 },
+            { text: 'Fear of punishment', score: 1 },
+            { text: 'I have no fears', score: 0 }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Introspection & Self-Awareness',
+      questions: [
+        {
+          text: 'What are your weaknesses and how do you work to improve them?',
+          options: [
+            { text: 'I actively seek out my flaws and address them openly', score: 3 },
+            { text: 'I am aware of some weaknesses and work on them occasionally', score: 2 },
+            { text: 'I am not sure but I\'m willing to learn', score: 1 },
+            { text: 'I don\'t think I have weaknesses', score: 0 }
+          ]
+        },
+        {
+          text: 'Describe how you react when faced with criticism or correction.',
+          options: [
+            { text: 'I accept it humbly and adjust immediately', score: 3 },
+            { text: 'I reflect on it and try to improve', score: 2 },
+            { text: 'I feel defensive at first but may adjust', score: 1 },
+            { text: 'I disregard criticism', score: 0 }
+          ]
+        },
+        {
+          text: 'Why do you believe you would make a good submissive?',
+          options: [
+            { text: 'I naturally find fulfillment in serving and obeying', score: 3 },
+            { text: 'I enjoy structured control and guidance', score: 2 },
+            { text: 'I want to explore but not commit fully', score: 1 },
+            { text: 'I\'m not sure I\'m suited for submission', score: 0 }
+          ]
+        },
+        {
+          text: 'In what ways do you thrive under structured control?',
+          options: [
+            { text: 'I perform best when every aspect of my life is directed', score: 3 },
+            { text: 'I like some structure but also independence', score: 2 },
+            { text: 'I feel constrained by too much control', score: 1 },
+            { text: 'I resist structured control', score: 0 }
+          ]
+        },
+        {
+          text: 'How do you cope with discomfort or pain in pursuit of a goal?',
+          options: [
+            { text: 'I embrace it as part of growth', score: 3 },
+            { text: 'I endure it when necessary', score: 2 },
+            { text: 'I avoid discomfort whenever possible', score: 1 },
+            { text: 'I cannot handle discomfort', score: 0 }
+          ]
+        },
+        {
+          text: 'What does self-awareness mean to you?',
+          options: [
+            { text: 'Understanding my desires and limits deeply', score: 3 },
+            { text: 'Being aware of some feelings and behaviours', score: 2 },
+            { text: 'Occasionally reflecting on myself', score: 1 },
+            { text: 'I rarely think about it', score: 0 }
+          ]
+        }
+      ]
+    },
+    {
+      title: 'Endurance & Service',
+      questions: [
+        {
+          text: 'Describe a time you continued a task despite exhaustion.',
+          options: [
+            { text: 'I often push through exhaustion to finish tasks', score: 3 },
+            { text: 'I sometimes push through if it\'s important', score: 2 },
+            { text: 'I prefer to rest when tired', score: 1 },
+            { text: 'I usually give up when exhausted', score: 0 }
+          ]
+        },
+        {
+          text: 'What does endurance mean in a servitude context?',
+          options: [
+            { text: 'Persisting in obedience even when challenged', score: 3 },
+            { text: 'Maintaining service most of the time', score: 2 },
+            { text: 'Doing what I\'m told occasionally', score: 1 },
+            { text: 'Not relevant to me', score: 0 }
+          ]
+        },
+        {
+          text: 'How do you prioritize tasks given by an authority figure?',
+          options: [
+            { text: 'I put them above all else immediately', score: 3 },
+            { text: 'I integrate them into my schedule', score: 2 },
+            { text: 'I do them when convenient', score: 1 },
+            { text: 'I often delay or ignore them', score: 0 }
+          ]
+        },
+        {
+          text: 'Explain how you would serve in a way that brings value to Domina.',
+          options: [
+            { text: 'By anticipating needs and acting without being asked', score: 3 },
+            { text: 'By following instructions promptly and respectfully', score: 2 },
+            { text: 'By doing tasks when reminded', score: 1 },
+            { text: 'I\'m unsure how to bring value', score: 0 }
+          ]
+        },
+        {
+          text: 'What sacrifices are you willing to make?',
+          options: [
+            { text: 'I\'ll sacrifice my comfort and desires to serve', score: 3 },
+            { text: 'I\'ll make some sacrifices but keep my boundaries', score: 2 },
+            { text: 'I\'m willing to sacrifice only occasionally', score: 1 },
+            { text: 'I\'m unwilling to sacrifice', score: 0 }
+          ]
+        },
+        {
+          text: 'Describe how you maintain focus under pressure.',
+          options: [
+            { text: 'I remain calm and follow instructions carefully', score: 3 },
+            { text: 'I try to stay focused but sometimes struggle', score: 2 },
+            { text: 'I find it difficult to focus under pressure', score: 1 },
+            { text: 'I lose focus easily', score: 0 }
+          ]
+        }
+      ]
+    }
+  ];
 
-  // Silentis test dynamic logic
-  var testContainer = document.getElementById('testContainer');
-  if (testContainer) {
-    // Define question blocks for different traits
-    var questionBlocks = [
-      {
-        title: 'Loyalty & Motivation',
-        questions: [
-          'Why do you seek entrance into Domina Silentia\u2019s realm?',
-          'Describe your understanding of absolute loyalty to a dominant figure.',
-          'What does submission mean to you?',
-          'How would you prove your devotion?',
-          'Describe a moment when you demonstrated unwavering commitment.',
-          'How do you handle obedience to commands that challenge you?'
-        ]
-      },
-      {
-        title: 'Introspection & Self\u2011Awareness',
-        questions: [
-          'What are your weaknesses and how do you work to improve them?',
-          'Describe how you react when faced with criticism or correction.',
-          'Why do you believe you would make a good submissive?',
-          'In what ways do you thrive under structured control?',
-          'How do you cope with discomfort or pain in pursuit of a goal?',
-          'What fears do you bring to this journey?'
-        ]
-      },
-      {
-        title: 'Endurance & Service',
-        questions: [
-          'Describe a time you continued a task despite exhaustion.',
-          'What does endurance mean in a servitude context?',
-          'How do you prioritize tasks given by an authority figure?',
-          'Explain how you would serve in a way that brings value to Domina.',
-          'What sacrifices are you willing to make?',
-          'Describe how you maintain focus under pressure.'
-        ]
-      }
-    ];
+  // Render the current block
+  function renderBlock() {
+    testContainer.innerHTML = '';
+    var block = questionBlocks[currentBlockIndex];
+    var form = document.createElement('form');
+    form.id = 'evaluationForm';
+    var heading = document.createElement('h2');
+    heading.textContent = block.title;
+    form.appendChild(heading);
 
-    var currentBlockIndex = 0;
-
-    function renderBlock() {
-      testContainer.innerHTML = '';
-      var block = questionBlocks[currentBlockIndex];
-      var form = document.createElement('form');
-      form.id = 'silentisForm';
-      var heading = document.createElement('h2');
-      heading.textContent = block.title;
-      form.appendChild(heading);
-      block.questions.forEach(function(q, idx) {
+    // Generate questions and radio options
+    block.questions.forEach(function(q, qIndex) {
+      var p = document.createElement('p');
+      p.textContent = q.text;
+      form.appendChild(p);
+      q.options.forEach(function(opt, optIndex) {
         var label = document.createElement('label');
-        label.textContent = q;
         label.style.display = 'block';
-        label.style.marginTop = '1rem';
-        var textarea = document.createElement('textarea');
-        textarea.required = true;
-        textarea.rows = 3;
-        textarea.style.width = '100%';
-        textarea.setAttribute('data-question-index', idx);
+        var input = document.createElement('input');
+        input.type = 'radio';
+        input.name = 'q' + qIndex;
+        input.value = opt.score;
+        label.appendChild(input);
+        label.appendChild(document.createTextNode(' ' + opt.text));
         form.appendChild(label);
-        form.appendChild(textarea);
       });
-      var submitButton = document.createElement('button');
-      submitButton.type = 'submit';
-      submitButton.className = 'cta';
-      submitButton.textContent = currentBlockIndex < questionBlocks.length - 1 ? 'Next' : 'Submit';
-      form.appendChild(submitButton);
-      testContainer.appendChild(form);
+    });
 
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var inputs = form.querySelectorAll('textarea');
-        var allLongEnough = true;
-        inputs.forEach(function(inp) {
-          if (inp.value.trim().length < 50) {
-            allLongEnough = false;
-          }
-        });
-        if (allLongEnough) {
-          currentBlockIndex++;
-          if (currentBlockIndex < questionBlocks.length) {
-            renderBlock();
-          } else {
-            // Test passed, redirect to welcome page
-            localStorage.setItem('testPassed', 'true');
-            window.location.href = 'welcome.html';
-          }
+    var submitBtn = document.createElement('button');
+    submitBtn.type = 'submit';
+    submitBtn.className = 'cta';
+    submitBtn.textContent = currentBlockIndex < questionBlocks.length - 1 ? 'Next' : 'Submit';
+    form.appendChild(submitBtn);
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var totalScore = 0;
+      var answeredAll = true;
+      block.questions.forEach(function(q, qIndex) {
+        var selected = form.querySelector('input[name="q' + qIndex + '"]:checked');
+        if (selected) {
+          totalScore += parseInt(selected.value);
         } else {
-          // Show explanation prompt
-          showExplanation();
+          answeredAll = false;
         }
       });
-    }
-
-    function showExplanation() {
-      testContainer.innerHTML = '';
-      var p = document.createElement('p');
-      p.textContent = 'Your responses were too short. Please explain why you believe you are worthy of serving Domina Silentia. Provide a detailed answer.';
-      testContainer.appendChild(p);
-      var textarea = document.createElement('textarea');
-      textarea.rows = 4;
-      textarea.style.width = '100%';
-      testContainer.appendChild(textarea);
-      var submitBtn = document.createElement('button');
-      submitBtn.textContent = 'Submit Explanation';
-      submitBtn.className = 'cta';
-      testContainer.appendChild(submitBtn);
-      submitBtn.addEventListener('click', function() {
-        if (textarea.value.trim().length < 100) {
-          alert('Please provide a more detailed explanation (at least 100 characters).');
+      var threshold = block.questions.length * 2; // average score of 2 required
+      if (!answeredAll || totalScore < threshold) {
+        showExplanation();
+      } else {
+        currentBlockIndex++;
+        if (currentBlockIndex < questionBlocks.length) {
+          renderBlock();
         } else {
           localStorage.setItem('testPassed', 'true');
           window.location.href = 'welcome.html';
         }
-      });
-    }
+      }
+    });
 
-    renderBlock();
+    testContainer.appendChild(form);
   }
-});
+
+  // Prompt the user to explain why they deserve to serve if they fail
+  function showExplanation() {
+    testContainer.innerHTML = '';
+    var message = document.createElement('p');
+    message.textContent = 'Your responses suggest you may not yet be ready. Please explain why you believe you are worthy of serving Domina (minimum 100 characters):';
+    testContainer.appendChild(message);
+    var textarea = document.createElement('textarea');
+    textarea.rows = 4;
+    textarea.style.width = '100%';
+    testContainer.appendChild(textarea);
+    var button = document.createElement('button');
+    button.className = 'cta';
+    button.textContent = 'Submit Explanation';
+    testContainer.appendChild(button);
+    button.addEventListener('click', function() {
+      if (textarea.value.trim().length < 100) {
+        alert('Please provide a more detailed explanation (at least 100 characters).');
+      } else {
+        // If they provide detailed reasoning, grant access
+        localStorage.setItem('testPassed', 'true');
+        window.location.href = 'welcome.html';
+      }
+    });
+  }
+
+  // Initial rendering
+  renderBlock();
+}
