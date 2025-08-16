@@ -15,3 +15,15 @@ body {
 .pulse {
   animation: pulse 2s infinite;
 }
+
+/* Make all links gold and pulsing */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  animation: pulse 2s infinite;
+}
+
+/* Highlight links on hover */
+a:hover {
+  color: #ffffff;
+}
