@@ -23,12 +23,12 @@ a, a:visited {
   animation: pulse 2s infinite;
 }
 
-/* Hide Silentis Test link in navigation */
-nahref*="silentis-test"
-  display: none;
-}nav a[href*="silentis-test"] {
+/* Hide Evaluation and Silentis Test link in navigation */
+nav a[href*="silentis-test"],
+nav a[href*="evaluation"] {
   display: none;
 }
+
 
 /* Highlight links on hover */
 a:hover {
