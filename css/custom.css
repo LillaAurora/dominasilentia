@@ -1,4 +1,4 @@
-/* Custom overrides for Domina Silentia theme */
+e/* Custom overrides for Domina Silentia theme */
 :root {
   /* Darker gold accent for a more luxurious feel */
   --accent-color: #b8860b;
@@ -21,6 +21,11 @@ a, a:visited {
   color: var(--accent-color);
   text-decoration: none;
   animation: pulse 2s infinite;
+}
+
+/* Hide Silentis Test link in navigation */
+nav a[href="silentis-test.html"] {
+  display: none;
 }
 
 /* Highlight links on hover */
