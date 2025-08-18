@@ -1,4 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', functi()o {
+                          // Navigation toggle: show all links when Home clicked
+
+                          
+  var nav = document.querySelector('nav');
+  if (nav) {
+    var firstLink = nav.querySelector('a');
+    if (firstLink) {
+      firstLink.addEventListener('click', function(e) {
+        if (!nav.classList.contains('expanded')) {
+          e.preventDefault();
+          nav.classList.add('expanded');
+        }
+      });
+    }
+  }
   // Age verification overlay
   var ageVerified = localStorage.getItem('ageVerified');
   if (!ageVerified) {
@@ -303,4 +318,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     renderBlock();
   }
+});
+// Navigation toggle: show all links when Home clicked
+document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  const homeLink = nav.querySelector('a');
+  if (!homeLink) return;
+  homeLink.addEventListener('click', function(e) {
+    if (!nav.classList.contains('expanded')) {
+      e.preventDefault();
+      nav.classList.add('expanded');
+    }
+  });
 });
