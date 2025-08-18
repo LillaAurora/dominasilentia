@@ -1,8 +1,10 @@
+@@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
 :root {
   --background-color: #0a0a0a;
   --accent-color: #d4af37;
   --text-color: #e1e1e1;
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family:'Playfair Display', serif, sans-serif;
 }
 
 body {
@@ -19,15 +21,22 @@ nav {
   gap: 2rem;
   padding: 1rem;
   background-color: rgba(255, 255, 255, 0.05);
+    position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 nav a {
   color: var(--accent-color);
   text-decoration: none;
   font-weight: bold;
+      display: none;
   transition: color 0.3s;
 }
 
+    
 nav a:hover {
   color: #fff;
 }
@@ -66,12 +75,15 @@ button.cta:hover {
 @keyframes pulse {
   0%, 100% {
     opacity: 1;
+    transform: scale(1);
   }
   50% {
-    opacity: 0.7;
+    opacity: 0.3;
+    transform: scale(1.12);
   }
 }
 
+}
 .section {
   padding: 2rem 1rem;
   max-width: 800px;
@@ -125,5 +137,25 @@ footer {
   background-color: var(--accent-color);
   border: none;
   color: var(--background-color);
+    
   cursor: pointer;
+}
+
+/* Show only the first link in the footer navigation until expanded */
+nav a:first-child {
+  display: inline;
+}
+
+/* When nav has expanded class, show all links */
+nav.expanded a {
+  display: inline;
+}
+
+/* Style for the logo image */
+.logo {
+  width: 150px;
+  height: auto;
+    display: block;
+  margin: 0 auto;
+  animation: pulse 3s infinite;
 }
